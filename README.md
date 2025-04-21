@@ -1,4 +1,192 @@
 # driver1
+POST /customers
+Тело запроса:
+
+{
+  ""name"": ""Иван Иванов"",
+  ""phone"": ""+7 900 123 4567""
+}
+
+Тело ответа:
+
+{
+  ""customer_id"": 1,
+  ""name"": ""Иван Иванов"",
+  ""phone"": ""+7 900 123 4567""
+}
+
+
+GET /customers
+Тело ответ:
+
+[
+  {
+    ""customer_id"": 1,
+    ""name"": ""Иван Иванов"",
+    ""phone"": ""+7 900 123 4567""
+  }
+]
+
+
+
+GET /customers/{id}
+Тело ответа:
+
+{
+  ""customer_id"": 1,
+  ""name"": ""Иван Иванов"",
+  ""phone"": ""+7 900 123 4567""
+}
+
+
+DELETE /customers/{id}
+Тело ответа:
+
+{
+  ""message"": ""200""
+}
+
+2.
+POST /drivers
+Тело запроса:
+
+{
+  ""name"": ""Петр Петров"",
+  ""phone"": ""+7 911 123 4567""
+}
+
+Тело ответ:
+
+{
+  ""driver_id"": 1,
+  ""name"": ""Петр Петров"",
+  ""phone"": ""+7 911 123 4567""
+}
+
+
+GET /drivers
+Тело ответ:
+
+[
+  {
+    ""driver_id"": 1,
+    ""name"": ""Петр Петров"",
+    ""phone"": ""+7 911 123 4567""
+  }
+]
+
+DELETE /drivers/{id}
+Тело ответ:
+
+{
+  ""message"": ""200""
+}
+
+
+---
+
+3.
+
+POST /cars
+Тело запроса:
+
+{
+  ""model"": ""Toyota Camry"",
+  ""car_number"": ""А123ВС77""
+}
+
+Тело ответ:
+
+{
+  ""car_id"": 1,
+  ""model"": ""Toyota Camry"",
+  ""car_number"": ""А123ВС77""
+}
+
+
+GET /cars
+Тело ответа:
+
+[
+  {
+    ""car_id"": 1,
+    ""model"": ""Toyota Camry"",
+    ""car_number"": ""А123ВС77""
+  }
+]
+
+
+DELETE /cars/{id}
+Ответ:
+
+{
+  ""message"": ""200""
+}
+
+
+4.
+
+POST /orders
+Тело запроса:
+
+{
+  ""start_destination"": ""ул.Ленина, 3"",
+  ""end_destination"": ""ул. Пушкина, 5"",
+  ""order_time"": ""2025-02-26 12:00:00"",
+  ""car_id"": 1,
+  ""driver_id"": 1,
+  ""customer_id"": 1
+}
+
+Тело ответа:
+
+{
+  ""order_id"": 1,
+  ""start_destination"": ""ул. Ленина, 10"",
+  ""end_destination"": ""ул. Пушкина, 5"",
+  ""order_time"": ""2025-02-26 12:00:00"",
+  ""car_id"": 1,
+  ""driver_id"": 1,
+  ""customer_id"": 1
+}
+
+
+GET /orders/{Id}
+Тело ответа:
+
+[
+   {
+    ""order_id"": 1,
+    ""start_destination"": ""ул. Ленина, 10"",
+    ""end_destination"": ""ул. Пушкина, 5"",
+    ""order_time"": ""2025-02-26 12:00:00"",
+    ""car_id"": 1,
+    ""driver_id"": 1,
+    ""customer_id"": 1
+  }
+]
+
+
+PUT /orders/{id}
+Тело запроса:
+
+{
+  ""status"": ""completed""
+}
+
+Ответ:
+
+{
+  ""message"": ""200""
+}
+
+
+DELETE /orders/{id}
+Ответ:
+
+{
+  ""message"": ""200""
+}
 import psycopg2
 from psycopg2 import sql
 
